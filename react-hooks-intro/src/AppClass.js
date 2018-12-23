@@ -6,13 +6,13 @@ class App extends Component {
   // we needed class components to use state
   state = {
     count: 0
-  }
+  };
 
   incrementCount = () => {
-    this.setState({
-      count: this.state.count + 1
-    })
-  }
+    this.setState(prevState => ({
+      count: prevState.count + 1
+    }));
+  };
 
   render() {
     return (
@@ -24,7 +24,7 @@ class App extends Component {
       <button onClick={this.incrementCount}>I was clicked {this.state.count} times</button>
     </div>
     );
-  }
-}
+  };
+};
 
 export default App;

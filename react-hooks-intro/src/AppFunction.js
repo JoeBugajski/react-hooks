@@ -14,8 +14,9 @@ const App = () => {
   // here "setCount" is basically setState (call it whatever), just for this piece of state
   
   const incrementCount = () => {
-    setCount(count + 1) // this is much simpler way to write click handler that sets state
-  }
+    setCount(prevCount => prevCount + 1); // with this custom setter function, 
+  };  // we get this "previous state" value, call it whatever
+      // doesn't have to return an object
 
   // no render needed!
   return(
