@@ -1,4 +1,4 @@
-import React, {useState} from 'react'; 
+import React, {useState, useEffect } from 'react'; 
 // useState is a function, now part of React
 // instead of creating a State object, you can just useState
 // it allows us to "hook" into the ability to work with state
@@ -15,7 +15,18 @@ const App = () => {
   // In class components, state is always an object.
   // But with useState, it doesn't have to be. For example:
   const [isOn, setIsOn] = useState(false);
+  // with useState, state can be a number, boolean, string, etc. 
+  // Doesn't have to be an object 
+  // !{ } === okay
 
+  useEffect(() => { // this hook allows us to use side effects
+    document.title = `You have clicked ${count} times`
+  }) // useEffect runs after every render
+  // after every state change, our app re-renders
+  // useEffect function is called
+  // and our page title updates
+  // since count is in the same scope as useEffect, 
+  // we don't need any API to use count
 
   const incrementCount = () => {
     setCount(prevCount => prevCount + 1); // with this custom setter function, 

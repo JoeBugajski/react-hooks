@@ -6,8 +6,26 @@ class App extends Component {
   // we needed class components to use state
   state = {
     count: 0,
-    isOn: false
+    isOn: false,
+    x: null,
+    y: null
   };
+
+  conponentDidMount() {
+    document.title = `You have been clicked ${this.state.count} times`;
+    window.addEventListener('mousemove', this.handleMouseMove);
+  }
+
+  componentDidUpdate() {
+    document.title = `You have been clicked ${this.state.count} times`
+  }
+
+  handleMouseMove = event => {
+    this.setState({
+      x: event.pageX,
+      y: event.pageY
+    });
+  }
 
   incrementCount = () => {
     this.setState(prevState => ({
@@ -41,6 +59,9 @@ class App extends Component {
         }}
         onClick={this.toggleLight}
       />
+      <h2>Mouse Position</h2>
+      <p>X position: {this.state.x}</p>
+      <p>Y position: {this.state.y}</p>
     </>
     );
   };
